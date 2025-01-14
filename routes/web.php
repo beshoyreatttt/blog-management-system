@@ -14,9 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(\App\Http\Controllers\ThemeController::class)->name('theme.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/category', 'category')->name('category');
+    Route::get('/contact', 'contact')->name('contact');
+    Route::get('/single-blog', 'singleBlog')->name('single-blog');
+    Route::get('/login', 'login')->name('login');
+    Route::get('/register', 'register')->name('register');
+
 });
+
+
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
